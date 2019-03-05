@@ -2,11 +2,10 @@
 #include "stdio.h"
 
 
-VList::VList()
-{
-	m_head = nullptr;
-	m_tail = nullptr;
-}
+VList::VList():
+	m_head(nullptr),
+	m_tail(nullptr)
+{}
 
 
 VList::~VList()

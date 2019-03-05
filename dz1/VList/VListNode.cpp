@@ -1,12 +1,11 @@
 #include "VListNode.hpp"
 
 
-VListNode::VListNode()
-{
-	m_prev = nullptr;
-	m_next = nullptr;
-	m_str = nullptr;
-}
+VListNode::VListNode():
+	m_prev(nullptr),
+	m_next(nullptr),
+	m_str(nullptr)
+{}
 
 
 VListNode::~VListNode()

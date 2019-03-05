@@ -1,0 +1,8 @@
+test.x
+*.o
+*.d
+*.gcno
+*.gcda
+*.log
+*.info
+covinfo
