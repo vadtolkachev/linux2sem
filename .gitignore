@@ -1,4 +1,5 @@
 test.x
+a.out
 *.o
 *.d
 *.gcno

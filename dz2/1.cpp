@@ -38,6 +38,16 @@ int main(int argc, char *argv[])
 	pthread_t thids[40];
 	IntSeg intSegs[40];
 
+	FILE *cpuinfo = popen("grep 'core id' /proc/cpuinfo && grep 'processor' /proc/cpuinfo", "r");
+	if(!cpuinfo)
+		exitErr("cpuinfo");
+
+	char c;
+	while((c = getc(cpuinfo)) != EOF)
+		putchar(c);
+	
+	pclose(cpuinfo);
+
 	int cpu_max = 7;
 	int cpu = 0;
 	for(int i = 0; i < numb; ++i)
