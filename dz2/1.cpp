@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 	pthread_t thids[40];
 	IntSeg intSegs[40];
 
-	int cpu_max = 3;
+	int cpu_max = 7;
 	int cpu = 0;
 	for(int i = 0; i < numb; ++i)
 	{
