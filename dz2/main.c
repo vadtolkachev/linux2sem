@@ -239,4 +239,3 @@ void exitErr(const char *str)
 	printf("exit with error : %s\n", str);
 	exit(EXIT_FAILURE);
 }
-
