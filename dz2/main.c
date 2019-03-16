@@ -218,18 +218,12 @@ void setSegs(IntSeg *intSegs, int numb, int th_numb)
 void integrate(IntSeg *seg)
 {
 	printf("thread[%lu], cpu numb = %d\n", pthread_self(), sched_getcpu());
-
 	
 	register double x = seg->begin;
 	register double end = seg->end;
 	register double res = 0;
 	register double step = ISTEP;
-	/*
-	double x = seg->begin;
-	double end = seg->end;
-	double res = 0;
-	double step = ISTEP;
-	*/
+
 	while(x < end)
 	{
 		res += step * func(x);
