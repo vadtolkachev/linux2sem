@@ -8,7 +8,7 @@
 
 
 const double IBEGIN = 0.0;
-const double IEND = 1000000.0;
+const double IEND = 9000000.0;
 const double ISTEP = 0.001;
 const int CORE_POS = 11;
 const int PROC_POS = 12;
