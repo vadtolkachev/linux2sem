@@ -217,7 +217,7 @@ void setSegs(IntSeg *intSegs, int numb, int th_numb)
 
 void integrate(IntSeg *seg)
 {
-	printf("thread[%lu], cpu numb = %d\n", pthread_self(), sched_getcpu());
+	//printf("thread[%lu], cpu numb = %d\n", pthread_self(), sched_getcpu());
 	
 	register double x = seg->begin;
 	register double end = seg->end;
