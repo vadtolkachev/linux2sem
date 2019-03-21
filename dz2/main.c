@@ -8,7 +8,7 @@
 
 
 const double IBEGIN = 0.0;
-const double IEND = 4000000.0;
+const double IEND = 1000000.0;
 const double ISTEP = 0.001;
 const int CORE_POS = 11;
 const int PROC_POS = 12;
@@ -44,8 +44,8 @@ int main(int argc, char *argv[])
 	pthread_t thids[40];
 	IntSeg intSegs[40];
 
-	getCoreMaxNumb();
-	int cpu_max = getProcMaxNumb();
+	int cpu_max = getCoreMaxNumb();
+	getProcMaxNumb();
 	int th_numb = cpu_max+1;
 	if(numb > th_numb)
 		th_numb = numb;
