@@ -35,18 +35,21 @@ void integrate(IntSeg *seg);
 void exitErr(const char *str) __attribute__((noreturn));
 
 
+int gl_numb = 0;
+
 
 int main(int argc, char *argv[])
 {
 	int numb = checkArg(argc, argv);
+	gl_numb = numb;
 	printf("numb = %d\n", numb);
 
 	pthread_t thids[40];
 	IntSeg intSegs[40];
 
-	int cpu_max = getCoreMaxNumb();
-	getProcMaxNumb();
-	int th_numb = cpu_max+1;
+	int core_max = getCoreMaxNumb();
+	int cpu_max = getProcMaxNumb();
+	int th_numb = core_max+1;
 	if(numb > th_numb)
 		th_numb = numb;
 
@@ -57,6 +60,7 @@ int main(int argc, char *argv[])
 	pthread_attr_init(&th_attr);
 
 	int cpu = 0;
+	printf("threads %d\n", th_numb);
 	for(int i = 0; i < th_numb; i++)
 	{
 		if(cpu > cpu_max)
@@ -217,7 +221,8 @@ void setSegs(IntSeg *intSegs, int numb, int th_numb)
 
 void integrate(IntSeg *seg)
 {
-	//printf("thread[%lu], cpu numb = %d\n", pthread_self(), sched_getcpu());
+	//printf("thread[%lu], cpu numb = %d\n", pthread_self(), sched_getcpu());'
+	printf("%d\n",sched_getcpu());
 	
 	register double x = seg->begin;
 	register double end = seg->end;
