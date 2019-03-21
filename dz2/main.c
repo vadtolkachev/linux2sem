@@ -7,6 +7,7 @@
 #include <math.h>
 
 
+#define MAX_THREAD_NUMB 1024
 const double IBEGIN = 0.0;
 const double IEND = 9000000.0;
 const double ISTEP = 0.001;
@@ -44,8 +45,8 @@ int main(int argc, char *argv[])
 	gl_numb = numb;
 	printf("numb = %d\n", numb);
 
-	pthread_t thids[40];
-	IntSeg intSegs[40];
+	pthread_t thids[MAX_THREAD_NUMB];
+	IntSeg intSegs[MAX_THREAD_NUMB];
 
 	int core_max = getCoreMaxNumb();
 	int cpu_max = getProcMaxNumb();
@@ -60,7 +61,7 @@ int main(int argc, char *argv[])
 	pthread_attr_init(&th_attr);
 
 	int cpu = 0;
-	printf("threads %d\n", th_numb);
+	printf("threads numb = %d\n", th_numb);
 	for(int i = 0; i < th_numb; i++)
 	{
 		if(cpu > cpu_max)
@@ -183,7 +184,7 @@ int checkArg(int argc, char *argv[])
 		exitErr("argc error");
 
 	int numb = atoi(argv[1]);
-	if((numb < 1) || (numb > 40))
+	if((numb < 1) || (numb > MAX_THREAD_NUMB))
 		exitErr("argv error");
 
 	return numb;
@@ -221,8 +222,7 @@ void setSegs(IntSeg *intSegs, int numb, int th_numb)
 
 void integrate(IntSeg *seg)
 {
-	//printf("thread[%lu], cpu numb = %d\n", pthread_self(), sched_getcpu());'
-	printf("%d\n",sched_getcpu());
+	printf("thread[%lu], cpu numb = %d\n", pthread_self(), sched_getcpu());
 	
 	register double x = seg->begin;
 	register double end = seg->end;
