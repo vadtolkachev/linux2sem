@@ -36,13 +36,10 @@ void integrate(IntSeg *seg);
 void exitErr(const char *str) __attribute__((noreturn));
 
 
-int gl_numb = 0;
-
 
 int main(int argc, char *argv[])
 {
 	int numb = checkArg(argc, argv);
-	gl_numb = numb;
 	printf("numb = %d\n", numb);
 
 	pthread_t thids[MAX_THREAD_NUMB];
